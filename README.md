@@ -30,9 +30,9 @@ HmsDuration("00:20:30.100").to_duration()  # "PT20M30.1S"
 UnitDuration("5 millisecond").to_duration()  # "PT0.005S"
 Time("5.2 nanosecond").normalize()  # "5.2 ns"
 Length("1 inch").normalize()  # "25.4 mm" thanks to pint
-Uncertain("3.14+/-0.1").normalize()  # "3.14±0.1"  thanks to uncertainties
+Estimate("3.14+/-0.1").normalize()  # "3.14±0.1"  thanks to uncertainties
 Well8x12("A01")  # microwell plates
-WellRange8x12("C01-C11; C12; A01-A12").normalize()  # "A01-A12;C01-C12
+WellRange8x12("A01-A04").normalize()  # "A01,A02,A03,A04"
 Json('{"b": "1", "a" "2"}').normalize()  # '{"a":"2","b":"1"}'
 ```
 
@@ -211,11 +211,11 @@ Operators:
 
 - Range in a single row: `A02-A12`
 - Range in a single column: `A01-G01`
-- Rectangular block: `A02\*G11
+- Rectangular block: `A02*G11`
 - Read like a book: `A01..C04`
 - Pick and choose: `A01,C04`
-- Comma-separated ranges: `A01-A12;C01-C12;G10..H12`
-- All the above: `A01;A04;B01*H11;A01-H01`
+- Comma-separated ranges: `A01-A12,C01-C12,G10..H12`
+- All the above: `A01,A04,B01*H11,A01-H01`
 
 ## Other
 

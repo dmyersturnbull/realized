@@ -25,9 +25,3 @@ try:
     __contact__ = metadata["maintainer"]
 except PackageNotFoundError:  # pragma: no cover
     logger.error(f"Could not load package metadata for {pkg}. Is it installed?")
-
-if __name__ == "__main__":  # pragma: no cover
-    if metadata is not None:
-        print(f"{pkg} (v{metadata['version']})")
-    else:
-        print("Unknown project info")
