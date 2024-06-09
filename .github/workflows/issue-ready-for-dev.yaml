@@ -1,0 +1,36 @@
+name: Triage issue
+
+on:
+  issues:
+    types:
+      - labeled
+
+concurrency:
+  group: ${{ github.workflow }}-issue
+  cancel-in-progress: true
+
+permissions:
+  issues: write
+  repository-projects: write
+
+jobs:
+  add-issue-to-project:
+    if: "contains(github.event.issue.labels.*.name, 'status: ready for dev')"
+    name: Add issue to project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete 'awaiting triage' label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.deleteLabel({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: "status: awaiting triage"
+            })
+      - uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/users/dmyersturnbull/projects/5
+          label-operator: OR
+          github-token: ${{ secrets.PAT }}

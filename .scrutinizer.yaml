@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: Copyright 2020-2024, Contributors to Realized
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/realized
+# SPDX-License-Identifier: Apache-2.0
+
+build:
+  environment:
+    # :tyranno: python: "${.project.requires-python~.semver_max(@)~}"
+    python: "3.12.0"
+  nodes:
+    my-tests:
+      dependencies:
+        before:
+          - "pip install 'hatchling~=1.7'"
+    analysis:
+checks:
+  python:
+    code_rating: true
+    duplicate_code: true

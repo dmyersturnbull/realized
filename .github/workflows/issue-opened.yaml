@@ -1,0 +1,30 @@
+name: Triage issue
+
+on:
+  issues:
+    types:
+      - opened
+
+concurrency:
+  group: ${{ github.workflow }}-issue
+  cancel-in-progress: true
+
+permissions:
+  issues: write
+  repository-projects: write
+
+jobs:
+  triage-issue:
+    name: Triage issue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add 'awaiting triage' label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["status: awaiting triage"]
+            })

@@ -1,0 +1,139 @@
+# SPDX-FileCopyrightText: Copyright 2020-2024, Contributors to CICD
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/cicd
+# SPDX-License-Identifier: Apache-2.0
+
+# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+
+repository:
+  # See https://developer.github.com/v3/repos/#edit for all available settings.
+
+  # The name of the repository. Changing this will rename the repository
+  # :tyranno: ${project.name}
+  name: realized
+
+  # A short description of the repository that will show up on GitHub
+  # :tyranno: ${project.description}
+  description: Human-readable string serializations for many data types
+
+  # :tyranno: ${project.urls.main}
+  homepage: https://github.com/dmyersturnbull/realized
+
+  # :tyranno: topics: ${project.keywords}
+  topics: serialization, duration, datetime, interval, quantity, microplate, microwell
+
+  private: false
+
+  has_issues: true
+  has_projects: true
+  has_discussions: true
+  has_downloads: true
+  has_wiki: false
+
+  default_branch: main
+  allow_squash_merge: true
+  allow_merge_commit: true
+  allow_rebase_merge: true
+
+  enable_automated_security_fixes: true
+  enable_vulnerability_alerts: true
+
+# Adapted from https://opensource.creativecommons.org/contributing-code/repo-labels/
+# https://gitmoji.dev/
+# https://seantrane.com/posts/logical-colorful-github-labels-18230/
+# and https://github.com/pvdlg/conventional-changelog-metahub
+labels:
+  - name: "breaking"
+    description: "🔨 Breaking change"
+    color: "#000000"
+  - name: "help"
+    description: "👋 Help needed"
+    color: "#40f040"
+  - name: "bookmark"
+    description: "🔖 Important for reference"
+    color: "#ffff44"
+  - name: "type: fix"
+    description: "🐛 A bug fix"
+    color: "#000060"
+  - name: "type: security"
+    description: "🔒 Vulnerability"
+    color: "#000060"
+  - name: "type: feature"
+    description: "✨ A new feature"
+    color: "#000060"
+  - name: "type: performance"
+    description: "⚡️ A code change that improves performance"
+    color: "#000060"
+  - name: "type: docs"
+    description: "📚 Documentation only changes"
+    color: "#000060"
+  - name: "type: build"
+    description: "🔧 Changes that affect the build system or external dependencies"
+    color: "#000060"
+  - name: "type: refactor"
+    description: "♻️ A code change that neither fixes a bug nor adds a feature"
+    color: "#000060"
+  - name: "type: test"
+    description: "🚨 Adding missing tests or correcting existing tests"
+    color: "#000060"
+  - name: "type: ci"
+    description: "⚙️ Continuous integration and deployment (CI/CD)"
+    color: "#000060"
+  - name: "type: style"
+    description: "🎨 A code change that does not affect the meaning of the code"
+    color: "#000060"
+  - name: "type: chore"
+    description: "️🧹 A change that does not modify src or test files"
+    color: "#000060"
+  - name: "priority: critical"
+    description: "🟥 Must be fixed ASAP"
+    color: "#ff6600"
+  - name: "priority: high"
+    description: "🟧 Stalls work on the project or its dependents"
+    color: "#cc9911"
+  - name: "priority: medium"
+    description: "🟨 Not blocking but should be fixed soon"
+    color: "#cccc11"
+  - name: "priority: low"
+    description: "🟩 Low priority and doesn't need to be rushed"
+    color: "#99dd00"
+  - name: "status: ready for dev"
+    description: "🏁 Ready for work"
+    color: "#cccccc"
+  - name: "status: blocked"
+    description: "🚧 Blocked & therefore not ready for work"
+    color: "#999999"
+  - name: "status: ticket work required"
+    description: "🧹 Needs more details before it can be worked on"
+    color: "#666666"
+  - name: "status: discarded"
+    description: "⛔️ Will not be worked on"
+    color: "#eeeeee"
+  - name: "status: awaiting triage"
+    description: "🚦 Has not been triaged & therefore, not ready for work"
+    color: "#444444"
+  - name: "effort: 1"
+    description: "1️⃣ Easy (t < 1 hr)"
+    color: "#300040"
+  - name: "effort: 2"
+    description: "2️⃣ Moderate (1 hr <= t < 4 hr)"
+    color: "#600040"
+  - name: "effort: 3"
+    description: "3️⃣ Hard (>= 4 hours)"
+    color: "#900040"
+  - name: "scope: i18n"
+    description: "🌐 Internationalization"
+    color: "#009000"
+
+branches:
+  - name: main
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: true
+      required_status_checks:
+        strict: true
+        contexts: []
+      enforce_admins: false
+      required_linear_history: true
+      restrictions: null
